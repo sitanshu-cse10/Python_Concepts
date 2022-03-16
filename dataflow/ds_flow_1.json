@@ -21,7 +21,7 @@
 				"          Column_3 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: true,",
+				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SOURCEDS"
 			]
 		}
