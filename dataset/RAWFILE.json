@@ -1,0 +1,37 @@
+{
+	"name": "RAWFILE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "EMP.csv",
+				"folderPath": "RAW_DIR",
+				"fileSystem": "sourcerawdata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ID ",
+				"type": "String"
+			},
+			{
+				"name": "ROLL_NO ",
+				"type": "String"
+			},
+			{
+				"name": "NAME",
+				"type": "String"
+			}
+		]
+	}
+}
