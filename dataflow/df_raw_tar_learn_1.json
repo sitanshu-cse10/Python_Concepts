@@ -1,5 +1,5 @@
 {
-	"name": "ds_flow_1",
+	"name": "df_raw_tar_learn_1",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -14,6 +14,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "TARFILE",
+						"type": "DatasetReference"
+					},
 					"name": "TARGETDS"
 				}
 			],
@@ -35,6 +39,9 @@
 				"SOURCEDS derive(ETLDATE = currentDate('UTC')) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> TARGETDS"
 			]
