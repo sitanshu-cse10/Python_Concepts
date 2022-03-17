@@ -39,7 +39,7 @@
 				"SOURCEDS derive(ETLDATE = currentDate('UTC')) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:[($parameter1)],",
+				"     partitionFileNames:['@dataset().targetfilename'],",
 				"     truncate: true,",
 				"     umask: 0022,",
 				"     preCommands: [],",
