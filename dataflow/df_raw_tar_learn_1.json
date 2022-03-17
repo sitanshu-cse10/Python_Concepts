@@ -1,0 +1,52 @@
+{
+	"name": "df_raw_tar_learn_1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "RAWFILE",
+						"type": "DatasetReference"
+					},
+					"name": "SOURCEDS"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "TARFILE",
+						"type": "DatasetReference"
+					},
+					"name": "TARGETDS"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {ID } as string,",
+				"          {ROLL_NO } as string,",
+				"          NAME as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false) ~> SOURCEDS",
+				"SOURCEDS derive(ETLDATE = currentDate('UTC')) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Target.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> TARGETDS"
+			]
+		}
+	}
+}
