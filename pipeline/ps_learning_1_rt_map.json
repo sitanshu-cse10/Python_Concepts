@@ -13,20 +13,25 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "sourcefilename",
-						"value": "EMP.csv"
-					},
-					{
-						"name": "targetfilename",
-						"value": "Target.csv"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "df_raw_tar_learn_1",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"SOURCEDS": {
+								"sorucefilename": {
+									"value": "@variables('sourcefile')",
+									"type": "Expression"
+								}
+							},
+							"TARGETDS": {
+								"targetfilename": {
+									"value": "@variables('targetfile')",
+									"type": "Expression"
+								}
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
@@ -36,6 +41,16 @@
 				}
 			}
 		],
+		"variables": {
+			"sourcefile": {
+				"type": "String",
+				"defaultValue": "EMP.csv"
+			},
+			"targetfile": {
+				"type": "String",
+				"defaultValue": "TARGET.csv"
+			}
+		},
 		"annotations": []
 	}
 }
