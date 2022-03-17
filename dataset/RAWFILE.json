@@ -5,12 +5,20 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"sorucefilename": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "EMP.csv",
+				"fileName": {
+					"value": "@dataset().sorucefilename",
+					"type": "Expression"
+				},
 				"folderPath": "RAW_DIR",
 				"fileSystem": "sourcerawdata"
 			},
