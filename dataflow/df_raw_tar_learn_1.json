@@ -28,7 +28,7 @@
 			],
 			"scriptLines": [
 				"parameters{",
-				"     targetfilename as string",
+				"     targetfilename as string (TARGETFILE.CSV)",
 				"}",
 				"source(output(",
 				"          {ID } as string,",
