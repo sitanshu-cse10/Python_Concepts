@@ -27,9 +27,6 @@
 				}
 			],
 			"scriptLines": [
-				"parameters{",
-				"     TS_FILNAME as string",
-				"}",
 				"source(output(",
 				"          {ID } as string,",
 				"          {ROLL_NO } as string,",
@@ -42,7 +39,8 @@
 				"SOURCEDS derive(ETLDATE = currentDate('UTC')) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:[($TS_FILNAME)],",
+				"     partitionFileNames:[($parameter1)],",
+				"     truncate: true,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
