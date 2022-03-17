@@ -49,6 +49,10 @@
 			"targetfile": {
 				"type": "String",
 				"defaultValue": "TARGET.csv"
+			},
+			"ts_filename": {
+				"type": "String",
+				"defaultValue": "Target.csv"
 			}
 		},
 		"annotations": []
