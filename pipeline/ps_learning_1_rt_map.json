@@ -13,7 +13,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "sourcefilename",
+						"value": "Emp.csv"
+					},
+					{
+						"name": "targetfilename",
+						"value": "Target.csv"
+					}
+				],
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "df_raw_tar_learn_1",
