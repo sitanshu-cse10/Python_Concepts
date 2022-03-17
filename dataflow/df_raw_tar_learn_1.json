@@ -37,13 +37,16 @@
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> SOURCEDS",
 				"SOURCEDS derive(ETLDATE = currentDate('UTC')) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"derivedColumn1 sink(allowSchemaDrift: false,",
 				"     validateSchema: false,",
+				"     partitionFileNames:[''],",
+				"     truncate: true,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> TARGETDS"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> TARGETDS"
 			]
 		}
 	}
