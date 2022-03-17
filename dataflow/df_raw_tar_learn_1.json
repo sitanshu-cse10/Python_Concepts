@@ -27,9 +27,6 @@
 				}
 			],
 			"scriptLines": [
-				"parameters{",
-				"     targetfile as string",
-				"}",
 				"source(output(",
 				"          {ID } as string,",
 				"          {ROLL_NO } as string,",
