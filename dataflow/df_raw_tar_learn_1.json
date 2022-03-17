@@ -37,7 +37,7 @@
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> SOURCEDS",
 				"SOURCEDS derive(ETLDATE = currentDate('UTC')) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: false,",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
