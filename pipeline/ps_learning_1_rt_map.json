@@ -24,7 +24,13 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "df_raw_tar_learn_1",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"filename": {
+								"value": "'@{variables('filename')}'",
+								"type": "Expression"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
@@ -44,10 +50,16 @@
 					}
 				],
 				"typeProperties": {
-					"variableName": ""
+					"variableName": "filename",
+					"value": "dynamic.csv"
 				}
 			}
 		],
+		"variables": {
+			"filename": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
