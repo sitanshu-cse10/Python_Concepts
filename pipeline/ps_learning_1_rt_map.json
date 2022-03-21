@@ -42,7 +42,10 @@
 						"name": "filename",
 						"value": "dynamic_check.csv"
 					}
-				]
+				],
+				"typeProperties": {
+					"variableName": ""
+				}
 			}
 		],
 		"annotations": []
