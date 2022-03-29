@@ -110,7 +110,7 @@
 								"type": "Expression"
 							},
 							"path": {
-								"value": "@variables('path')",
+								"value": "@variables('target_file')",
 								"type": "Expression"
 							},
 							"compression_type": "None",
