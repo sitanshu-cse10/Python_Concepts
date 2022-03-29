@@ -60,11 +60,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": {
-								"value": "@activity('Config_lookUp').output.container",
+								"value": "@activity('Config_lookUp').output.firstRow.container",
 								"type": "Expression"
 							},
 							"path": {
-								"value": "@activity('Config_lookUp').output.path",
+								"value": "@activity('Config_lookUp').output.firstRow.path",
 								"type": "Expression"
 							},
 							"compression_type": "None",
@@ -77,7 +77,7 @@
 							"first_row_as_header": true,
 							"null_value": "n/a",
 							"directory": {
-								"value": "@activity('Config_lookUp').output.directory",
+								"value": "@activity('Config_lookUp').output.firstRow.directory",
 								"type": "Expression"
 							}
 						}
@@ -89,11 +89,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": {
-								"value": "@activity('Config_lookUp').output.container",
+								"value": "@activity('Config_lookUp').output.firstRow.container",
 								"type": "Expression"
 							},
 							"path": {
-								"value": "@activity('Config_lookUp').output.target_file",
+								"value": "@activity('Config_lookUp').output.firstRow.target_file",
 								"type": "Expression"
 							},
 							"compression_type": "None",
