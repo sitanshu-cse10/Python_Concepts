@@ -5,32 +5,7 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Set variable1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Set variable1_copy1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Set variable1_copy1_copy1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Set variable1_copy1_copy2",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -88,6 +63,7 @@
 							"compression_type": "None",
 							"compression_level": "None",
 							"column_delimiter": ",",
+							"row_delimiter": "\\n",
 							"encoding": "UTF-8",
 							"escape_character": "\\",
 							"quote_character": "\"",
@@ -116,6 +92,7 @@
 							"compression_type": "None",
 							"compression_level": "None",
 							"column_delimiter": ",",
+							"row_delimiter": "\\n",
 							"encoding": "UTF-8",
 							"escape_character": "\\",
 							"quote_character": "\"",
@@ -130,43 +107,32 @@
 				]
 			},
 			{
-				"name": "Set variable1",
-				"type": "SetVariable",
+				"name": "Lookup1",
+				"type": "Lookup",
 				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "container",
-					"value": "sourcerawdata"
-				}
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
 			},
 			{
-				"name": "Set variable1_copy1",
-				"type": "SetVariable",
+				"name": "ForEach1",
+				"type": "ForEach",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "path",
-					"value": "EMP.csv"
-				}
-			},
-			{
-				"name": "Set variable1_copy1_copy1",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "directory",
-					"value": "RAW_DIR"
-				}
-			},
-			{
-				"name": "Set variable1_copy1_copy2",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "target_file",
-					"value": "sitanshu_test.csv"
+					"activities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": []
+						}
+					]
 				}
 			}
 		],
