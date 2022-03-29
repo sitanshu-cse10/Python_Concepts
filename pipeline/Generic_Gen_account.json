@@ -106,7 +106,7 @@
 							"first_row_as_header": true,
 							"null_value": "n/a",
 							"directory": {
-								"value": "@variables('directory')",
+								"value": "@activity('Config_lookUp').output.firstRow.directory",
 								"type": "Expression"
 							}
 						}
