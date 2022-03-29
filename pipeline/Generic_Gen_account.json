@@ -110,7 +110,7 @@
 								"type": "Expression"
 							},
 							"path": {
-								"value": "@pipeline().parameters.path",
+								"value": "@variables('path')",
 								"type": "Expression"
 							},
 							"compression_type": "None",
