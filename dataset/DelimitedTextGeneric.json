@@ -40,8 +40,8 @@
 				"defaultValue": "\""
 			},
 			"first_row_as_header": {
-				"type": "string",
-				"defaultValue": "true"
+				"type": "bool",
+				"defaultValue": true
 			},
 			"null_value": {
 				"type": "string",
