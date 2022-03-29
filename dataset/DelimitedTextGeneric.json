@@ -1,0 +1,63 @@
+{
+	"name": "DelimitedTextGeneric",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"container": {
+				"type": "string"
+			},
+			"path": {
+				"type": "string"
+			},
+			"compression_type": {
+				"type": "string",
+				"defaultValue": "None"
+			},
+			"compression_level": {
+				"type": "string",
+				"defaultValue": "None"
+			},
+			"column_delimiter": {
+				"type": "string",
+				"defaultValue": ","
+			},
+			"row_delimiter": {
+				"type": "string"
+			},
+			"encoding": {
+				"type": "string",
+				"defaultValue": "UTF-8"
+			},
+			"escape_character": {
+				"type": "string",
+				"defaultValue": "\\"
+			},
+			"quote_character": {
+				"type": "string",
+				"defaultValue": "\""
+			},
+			"first_row_as_header": {
+				"type": "string",
+				"defaultValue": "true"
+			},
+			"null_value": {
+				"type": "string",
+				"defaultValue": "n/a"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
