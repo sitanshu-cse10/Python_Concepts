@@ -23,6 +23,12 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "Set variable1_copy1_copy2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"policy": {
@@ -45,7 +51,26 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
@@ -58,6 +83,30 @@
 							},
 							"path": {
 								"value": "@variables('path')",
+								"type": "Expression"
+							},
+							"compression_type": "None",
+							"compression_level": "None",
+							"column_delimiter": ",",
+							"encoding": "UTF-8",
+							"escape_character": "\\",
+							"quote_character": "\"",
+							"first_row_as_header": true,
+							"null_value": "n/a",
+							"directory": {
+								"value": "@variables('directory')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedTextGeneric",
+						"type": "DatasetReference",
+						"parameters": {
+							"container": {
+								"value": "@variables('container')",
 								"type": "Expression"
 							},
 							"compression_type": "None",
@@ -105,6 +154,16 @@
 					"variableName": "directory",
 					"value": "RAW_DIR"
 				}
+			},
+			{
+				"name": "Set variable1_copy1_copy2",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "target_file",
+					"value": "sitanshu_test.csv"
+				}
 			}
 		],
 		"variables": {
@@ -115,6 +174,9 @@
 				"type": "String"
 			},
 			"directory": {
+				"type": "String"
+			},
+			"target_file": {
 				"type": "String"
 			}
 		},
