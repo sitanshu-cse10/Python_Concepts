@@ -60,7 +60,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": {
-								"value": "@variables('container')",
+								"value": "@activity('Config_lookUp').output.directory",
 								"type": "Expression"
 							},
 							"path": {
