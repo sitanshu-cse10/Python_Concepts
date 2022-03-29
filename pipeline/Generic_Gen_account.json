@@ -5,7 +5,14 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set_Configuration",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -107,7 +114,7 @@
 				]
 			},
 			{
-				"name": "Lookup1",
+				"name": "Config_lookUp",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -120,11 +127,19 @@
 				"userProperties": []
 			},
 			{
-				"name": "ForEach1",
+				"name": "Set_Configuration",
 				"type": "ForEach",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Config_lookUp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Set variable1",
