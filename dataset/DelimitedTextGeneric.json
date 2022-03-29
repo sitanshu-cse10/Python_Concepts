@@ -25,7 +25,8 @@
 				"defaultValue": ","
 			},
 			"row_delimiter": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "\\n"
 			},
 			"encoding": {
 				"type": "string",
