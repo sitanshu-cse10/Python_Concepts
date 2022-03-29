@@ -50,9 +50,6 @@
 			},
 			"directory": {
 				"type": "string"
-			},
-			"linked_service": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
