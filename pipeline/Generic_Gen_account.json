@@ -166,6 +166,20 @@
 				}
 			}
 		],
+		"parameters": {
+			"container": {
+				"type": "string"
+			},
+			"path": {
+				"type": "string"
+			},
+			"directory": {
+				"type": "string"
+			},
+			"target_file": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"container": {
 				"type": "String"
