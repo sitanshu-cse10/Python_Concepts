@@ -46,6 +46,9 @@
 			"null_value": {
 				"type": "string",
 				"defaultValue": "n/a"
+			},
+			"directory": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -55,6 +58,10 @@
 				"type": "AzureBlobFSLocation",
 				"fileName": {
 					"value": "@dataset().path",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().directory",
 					"type": "Expression"
 				},
 				"fileSystem": {
