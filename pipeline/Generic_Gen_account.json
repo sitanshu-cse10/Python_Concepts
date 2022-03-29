@@ -109,6 +109,10 @@
 								"value": "@variables('container')",
 								"type": "Expression"
 							},
+							"path": {
+								"value": "@pipeline().parameters.path",
+								"type": "Expression"
+							},
 							"compression_type": "None",
 							"compression_level": "None",
 							"column_delimiter": ",",
