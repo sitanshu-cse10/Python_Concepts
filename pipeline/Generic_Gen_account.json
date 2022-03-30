@@ -34,14 +34,12 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "ParquetSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"type": "ParquetWriteSettings"
 						}
 					},
 					"enableStaging": false,
@@ -85,7 +83,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedTextGeneric",
+						"referenceName": "Parquet_Generic",
 						"type": "DatasetReference",
 						"parameters": {
 							"container": {
@@ -96,15 +94,6 @@
 								"value": "@activity('Config_lookUp').output.firstRow.target_file",
 								"type": "Expression"
 							},
-							"compression_type": "None",
-							"compression_level": "None",
-							"column_delimiter": ",",
-							"row_delimiter": "\\n",
-							"encoding": "UTF-8",
-							"escape_character": "\\",
-							"quote_character": "\"",
-							"first_row_as_header": true,
-							"null_value": "n/a",
 							"directory": {
 								"value": "@activity('Config_lookUp').output.firstRow.directory",
 								"type": "Expression"
@@ -141,19 +130,6 @@
 						"referenceName": "Config_Json",
 						"type": "DatasetReference"
 					}
-				}
-			},
-			{
-				"name": "Switch1",
-				"type": "Switch",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"cases": [
-						{
-							"value": "Case1"
-						}
-					]
 				}
 			}
 		],
