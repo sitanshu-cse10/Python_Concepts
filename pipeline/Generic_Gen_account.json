@@ -5,14 +5,7 @@
 			{
 				"name": "Copy_data_Gen",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Config_lookUp",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -131,16 +124,81 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@activity('Config_lookUp').output.firstRow.directory",
+						"type": "Expression"
+					},
+					"cases": [],
+					"defaultActivities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Config_lookUp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "container",
+					"value": {
+						"value": "@activity('Config_lookUp').output.firstRow.container",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": []
 			}
 		],
+		"parameters": {
+			"container": {
+				"type": "string"
+			},
+			"directory": {
+				"type": "string"
+			},
+			"path": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"container": {
 				"type": "String"
 			},
 			"path": {
-				"type": "String"
-			},
-			"directory": {
 				"type": "String"
 			},
 			"target_file": {
