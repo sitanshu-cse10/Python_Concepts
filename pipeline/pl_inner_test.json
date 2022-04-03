@@ -3,16 +3,12 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "inner_test",
-				"type": "Fail",
+				"name": "Wait1",
+				"type": "Wait",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"message": {
-						"value": "@pipeline().parameters.inner_value_pl",
-						"type": "Expression"
-					},
-					"errorCode": "400_test"
+					"waitTimeInSeconds": 1
 				}
 			}
 		],
