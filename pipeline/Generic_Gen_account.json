@@ -99,17 +99,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"container": {
-				"type": "string"
-			},
-			"directory": {
-				"type": "string"
-			},
-			"path": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
