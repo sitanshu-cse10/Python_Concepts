@@ -194,17 +194,6 @@
 				"type": "string"
 			}
 		},
-		"variables": {
-			"container": {
-				"type": "String"
-			},
-			"path": {
-				"type": "String"
-			},
-			"target_file": {
-				"type": "String"
-			}
-		},
 		"annotations": []
 	}
 }
