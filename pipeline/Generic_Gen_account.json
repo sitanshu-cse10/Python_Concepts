@@ -3,99 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_data_Gen",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": false,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DelimitedTextGeneric",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": {
-								"value": "@activity('Config_lookUp').output.firstRow.container",
-								"type": "Expression"
-							},
-							"path": {
-								"value": "@activity('Config_lookUp').output.firstRow.path",
-								"type": "Expression"
-							},
-							"compression_type": "None",
-							"compression_level": "None",
-							"column_delimiter": ",",
-							"row_delimiter": "\\n",
-							"encoding": "UTF-8",
-							"escape_character": "\\",
-							"quote_character": "\"",
-							"first_row_as_header": true,
-							"null_value": "n/a",
-							"directory": {
-								"value": "@activity('Config_lookUp').output.firstRow.directory",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "Parquet_Generic",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": {
-								"value": "@activity('Config_lookUp').output.firstRow.container",
-								"type": "Expression"
-							},
-							"path": {
-								"value": "@activity('Config_lookUp').output.firstRow.target_file",
-								"type": "Expression"
-							},
-							"directory": {
-								"value": "@activity('Config_lookUp').output.firstRow.directory",
-								"type": "Expression"
-							}
-						}
-					}
-				]
-			},
-			{
 				"name": "Config_lookUp",
 				"type": "Lookup",
 				"dependsOn": [],
@@ -130,7 +37,7 @@
 				"type": "Switch",
 				"dependsOn": [
 					{
-						"activity": "Set variable1",
+						"activity": "Config_lookUp",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -150,37 +57,21 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"waitOnCompletion": true
+								"pipeline": {
+									"referenceName": "pl_inner_test",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"inner_value_pl": {
+										"value": "@activity('Config_lookUp').output.firstRow.container",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
 				}
-			},
-			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Config_lookUp",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "container",
-					"value": {
-						"value": "@activity('Config_lookUp').output.firstRow.container",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "ForEach1",
-				"type": "ForEach",
-				"dependsOn": [],
-				"userProperties": []
 			}
 		],
 		"parameters": {
