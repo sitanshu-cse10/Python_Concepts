@@ -31,11 +31,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"inner_value_pl": {
-				"type": "string"
-			}
-		},
 		"variables": {
 			"inner_test": {
 				"type": "String"
